@@ -1,0 +1,465 @@
+{
+  "about": "The neutral names cases use. A runner maps each to its own language; it adds no rule of its own.",
+  "key": {
+    "id": "mfxk_C0NF0RMANCE1",
+    "seed_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "note": "The test key from the API description's signing test vector. Build the client with it."
+  },
+  "client": {
+    "base_url": "the line the fake hub prints: http://127.0.0.1:<port>/v1",
+    "waits": "configure the client so a retry does not actually sleep (a Retry-After is honoured as a decision, not as wall time)"
+  },
+  "ops": {
+    "signing.sign": {
+      "args": [
+        "timestamp",
+        "nonce",
+        "method",
+        "path_with_query",
+        "body"
+      ],
+      "returns": [
+        "signature"
+      ],
+      "note": "sign the message with the test key; no request is made"
+    },
+    "terminals.get": {
+      "args": [
+        "terminal_id"
+      ],
+      "returns": [
+        "id",
+        "state"
+      ]
+    },
+    "terminals.page": {
+      "args": [
+        "cursor?",
+        "limit?"
+      ],
+      "returns": [
+        "count",
+        "next_cursor"
+      ],
+      "note": "one page; count is the number of items in it"
+    },
+    "terminals.list": {
+      "args": [
+        "limit?"
+      ],
+      "returns": [
+        "ids"
+      ],
+      "note": "every terminal, following the cursor; ids in order. limit is the page size the SDK asks for, so a small one makes it follow the cursor"
+    },
+    "terminals.create": {
+      "args": [
+        "farm_id",
+        "broker_id",
+        "server_id",
+        "idempotency_key"
+      ],
+      "returns": [
+        "id",
+        "state"
+      ]
+    },
+    "execution.place_order": {
+      "args": [
+        "terminal_id",
+        "symbol",
+        "side",
+        "volume",
+        "idempotency_key"
+      ],
+      "returns": [
+        "ok",
+        "state",
+        "command_id",
+        "duplicate",
+        "retryable",
+        "exec_price",
+        "position",
+        "comment_raw"
+      ],
+      "note": "never raises; exec_price is the fill price (a $decimal compares as a decimal), position is the position ticket (tickets.position), and a field the result does not carry is null"
+    },
+    "catalog.quote": {
+      "args": [
+        "broker_id",
+        "symbol",
+        "server_id?"
+      ],
+      "returns": [
+        "bid",
+        "ask",
+        "age_s",
+        "state"
+      ]
+    },
+    "stream.read": {
+      "args": [
+        "channels",
+        "count"
+      ],
+      "returns": [
+        "seqs",
+        "types",
+        "dropped",
+        "reconnects",
+        "lifetime_reconnects",
+        "slow_consumer_drops",
+        "resyncs",
+        "refused"
+      ],
+      "note": "open the stream against the fake hub (reconnecting allowed, no real wait between attempts), subscribe each channel in order, read until count data messages have arrived, then close. seqs and types are those messages in order; the rest are the stream's own counters: messages a seq gap proves were missed, connections after the first, 4009 and 4008 closes, resyncs, and channels the platform refused"
+    },
+    "stream.close_waiting": {
+      "args": [
+        "channels"
+      ],
+      "returns": [
+        "ended",
+        "reconnects"
+      ],
+      "note": "open the stream against the fake hub (reconnecting allowed, no real wait between attempts) and subscribe each channel in order. Start a read for the next message and leave it waiting while the hub sends nothing more (give it a moment, 100 ms). Close the stream. ended is true when the waiting read finished within 2 s with no message and no error; reconnects is the stream's count of connections after the first, which closing must leave at 0"
+    },
+    "md.subscribe_account": {
+      "args": [
+        "account_id",
+        "symbol",
+        "idempotency_key"
+      ],
+      "returns": [
+        "id",
+        "account_id",
+        "symbol",
+        "state"
+      ],
+      "note": "a cTrader account's market-data subscription; state is the word the API sends (pending until the first spot)"
+    },
+    "md.account_subscriptions": {
+      "args": [
+        "account_id"
+      ],
+      "returns": [
+        "symbols"
+      ],
+      "note": "follow next_cursor to the end; symbols is every subscription's symbol, in the order served"
+    },
+    "md.account_candles": {
+      "args": [
+        "account_id",
+        "symbol",
+        "timeframe",
+        "from",
+        "to"
+      ],
+      "returns": [
+        "count",
+        "first_open",
+        "last_close"
+      ],
+      "note": "from and to are ISO 8601 instants; count is the number of bars, and first_open and last_close are the first bar's open and the last bar's close (a $decimal compares as a decimal)"
+    },
+    "risk.check": {
+      "args": [
+        "account_id",
+        "symbol",
+        "side",
+        "volume"
+      ],
+      "returns": [
+        "verdict"
+      ],
+      "note": "check a market order already sized against the account's rules (client.risk.check); nothing is sent to the broker"
+    },
+    "risk.create_plan": {
+      "args": [
+        "account_id",
+        "symbol",
+        "side",
+        "volume",
+        "idempotency_key"
+      ],
+      "returns": [
+        "id"
+      ],
+      "note": "an exit plan placed with its market order and one step: at 1R close half, held by MFX Hub ({trigger: {kind: r, value: \"1\"}, action: {kind: close_part, pct: \"50\"}, held_by: mfx})"
+    },
+    "risk.create_policy": {
+      "args": [
+        "name",
+        "rules",
+        "reset",
+        "idempotency_key"
+      ],
+      "returns": [
+        "id",
+        "version"
+      ],
+      "note": "rules and reset are passed as given; version is the policy's current version"
+    },
+    "risk.challenge_accounts": {
+      "args": [
+        "challenge_id",
+        "state",
+        "sort"
+      ],
+      "returns": [
+        "ids"
+      ],
+      "note": "every account of the challenge, following the cursor; state is a list sent as repeated parameters; ids are the account ids in order"
+    },
+    "copy.create_leader": {
+      "args": [
+        "source",
+        "signal_lifetime_s",
+        "idempotency_key",
+        "account_id?"
+      ],
+      "returns": [
+        "id",
+        "source",
+        "state"
+      ],
+      "note": "make a leader; state and source are the words the API sends"
+    },
+    "copy.leaders": {
+      "args": [
+        "state?"
+      ],
+      "returns": [
+        "ids",
+        "stats_leaders"
+      ],
+      "note": "state is a list of states; follow next_cursor to the end. ids are every leader's id in the order served; stats_leaders is the stats row's leaders count"
+    },
+    "copy.send_open_signal": {
+      "args": [
+        "leader_id",
+        "id",
+        "symbol",
+        "side",
+        "volume",
+        "idempotency_key"
+      ],
+      "returns": [
+        "signal_id",
+        "duplicate"
+      ],
+      "note": "an external leader's open; id is the caller's own id for the signal, and volume a $decimal (a $float must be refused)"
+    },
+    "copy.create_follower": {
+      "args": [
+        "account_id",
+        "leader_id",
+        "scaling",
+        "idempotency_key",
+        "options?"
+      ],
+      "returns": [
+        "id",
+        "state",
+        "mandate_version"
+      ],
+      "note": "scaling and options are objects in the API's own names, passed as the SDK takes them"
+    },
+    "copy.preview_follower": {
+      "args": [
+        "account_id",
+        "leader_id",
+        "scaling",
+        "rows"
+      ],
+      "returns": [
+        "refusal",
+        "follower_volumes",
+        "reasons"
+      ],
+      "note": "rows are objects with symbol and volume; follower_volumes and reasons are each row's, in order, null where the API sent null; refusal is the API's refusal or null"
+    },
+    "copy.unfollow": {
+      "args": [
+        "follower_id",
+        "close_copied",
+        "idempotency_key"
+      ],
+      "returns": [
+        "state"
+      ]
+    },
+    "copy.reset_stopouts": {
+      "args": [
+        "follower_id",
+        "reason",
+        "idempotency_key"
+      ],
+      "returns": [
+        "state"
+      ]
+    },
+    "copy.log": {
+      "args": [
+        "outcome?",
+        "reason?",
+        "from?",
+        "to?"
+      ],
+      "returns": [
+        "count",
+        "reasons",
+        "stats_refused"
+      ],
+      "note": "one page of the copy log; outcome and reason are lists, from and to ISO 8601 instants. count is the rows in the page, reasons each row's reason in order (null where none), stats_refused the stats row's refused count"
+    },
+    "copy.add_group_followers": {
+      "args": [
+        "group_id",
+        "follower_ids",
+        "idempotency_key"
+      ],
+      "returns": [
+        "outcomes",
+        "reasons"
+      ],
+      "note": "outcomes and reasons are each follower's, in the order answered"
+    },
+    "copy.read_events": {
+      "args": [
+        "count"
+      ],
+      "returns": [
+        "types",
+        "accounts",
+        "venues",
+        "reasons"
+      ],
+      "note": "open the stream against the fake hub, subscribe the events channel, read count messages and close. Read each as the SDK's typed copy event where it has one: types are the event types, accounts each event's account_id, venues its venue, reasons a copy.refused event's reason and null for any other (copy.closed included)"
+    },
+    "copy.close_group": {
+      "args": [
+        "group_id",
+        "reason",
+        "pause",
+        "idempotency_key"
+      ],
+      "returns": [
+        "batch_id",
+        "paused",
+        "closes"
+      ],
+      "note": "close the copied positions of every live member of the group; pause is required. closes are the close ids answered, in order"
+    },
+    "copy.rollover_group": {
+      "args": [
+        "group_id",
+        "dry_run",
+        "fields?",
+        "after?",
+        "limit?",
+        "idempotency_key?"
+      ],
+      "returns": [
+        "outcomes",
+        "reasons",
+        "next_after"
+      ],
+      "note": "set the group's template on its members, or with dry_run see what it would change; a dry run takes no idempotency key. outcomes and reasons are each member's, in the order answered"
+    },
+    "copy.closes": {
+      "args": [
+        "batch_id?",
+        "state?"
+      ],
+      "returns": [
+        "ids",
+        "states",
+        "stats_incomplete"
+      ],
+      "note": "state is a list of states; follow next_cursor to the end. ids and states are every close's, in the order served; stats_incomplete is the stats row's incomplete count"
+    },
+    "tenant.service_agreement": {
+      "args": [],
+      "returns": [
+        "due",
+        "held",
+        "plan",
+        "plan_change_state",
+        "plan_change_to",
+        "documents",
+        "accept_url"
+      ],
+      "note": "what the organisation must still accept (GET /tenant/service-agreement). plan_change_state and plan_change_to are the plan change's state and to, null when there is none; documents is each document due's key, in order"
+    },
+    "agreement.due_warnings": {
+      "args": [
+        "terminal_id",
+        "clients",
+        "calls"
+      ],
+      "returns": [
+        "warnings"
+      ],
+      "note": "build clients clients, one after another, and make terminals.get(terminal_id) calls times through each, capturing what the SDK logs. warnings is the number of warnings it logged, over every client, that a Service Agreement is due (the MFX-Service-Agreement header). An SDK warns once per client, the first time it sees the header, never once per answer"
+    }
+  },
+  "markers": {
+    "$decimal": "an exact decimal, given as a string: pass the language's decimal type (Decimal, decimal, BigDecimal) or the string",
+    "$float": "a binary floating-point number: pass the language's float or double, to prove it is refused",
+    "$fixture": "already expanded by the fake hub before a runner sees the case"
+  },
+  "observe": {
+    "returns": "the call returned; each named field equals the value (a $decimal compares as a decimal)",
+    "raises": "the call raised (or rejected with) the named error kind; fields such as code and status equal the values",
+    "refuses": "the call refused before sending anything: invalid_argument is the language's argument or type error"
+  },
+  "errors": [
+    "ApiError",
+    "ValidationError",
+    "AuthError",
+    "ForbiddenError",
+    "TenantDisabledError",
+    "TenantSuspendedError",
+    "MaintenanceError",
+    "NotFoundError",
+    "ConflictError",
+    "ServiceAgreementNotAcceptedError",
+    "TermsNotAcceptedError",
+    "StateError",
+    "PlacementError",
+    "UnsupportedBrokerError",
+    "RateLimitError",
+    "UpstreamError",
+    "DependencyUnavailableError",
+    "InternalError",
+    "TransportError",
+    "Timeout"
+  ],
+  "live": {
+    "about": "Cases in live/ run against a real MFX Hub, not the fake one: no case scripts the hub's answer, so each holds a rule a real hub shows on its own. They run with the caller's own key, on a terminal that is logged in, and send at most one market order of the smallest volume, which the runner closes.",
+    "run": {
+      "terminal_id": "the run's terminal, logged in to a demo account",
+      "broker_id": "that terminal's broker",
+      "server_id": "that terminal's broker server",
+      "symbol": "a symbol that server lists and quotes",
+      "md_channel": "the ticks channel of symbol on server_id, as the SDK names it",
+      "min_volume": "the symbol's smallest volume, as an exact decimal",
+      "unused_id": "a new UUID no terminal has, made fresh for the case",
+      "new_key": "a new idempotency key, made fresh for the case"
+    },
+    "case": {
+      "client": "test_key: build the client with the suite's test key instead of the caller's own. Absent: the caller's own key",
+      "needs": "market: the case needs a market that is quoting. When the market does not answer in time the case is skipped, not failed"
+    },
+    "observe": {
+      "returns": "as for the fake hub; a {\"$run\": name} value is that run value",
+      "raises": "as for the fake hub",
+      "refuses": "as for the fake hub",
+      "includes": "the call returned; each named list field includes the value",
+      "exact": "the call returned; each named field is exact: the language's decimal type or the decimal string the SDK keeps it as, never a binary float, and greater than zero",
+      "ascending": "the call returned; the named list rises strictly. Combined with returns, both hold",
+      "repeat": "make the call twice with the same arguments, idempotency key included. The second returns as repeat.returns says, and each field in repeat.same equals the first call's. Close any position either call opened"
+    }
+  }
+}

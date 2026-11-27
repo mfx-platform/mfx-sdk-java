@@ -1,0 +1,90 @@
+# Publish a release of com.mfxhub:mfx-sdk to Maven Central when a version tag (v1.2.3) is pushed.
+#
+# Maven Central takes the jar, the sources jar and the Javadoc jar with the POM, each signed with
+# the project's GPG key, through the Central Portal. The signing key and the Portal token live only in
+# the `maven-central` environment, which accepts version tags and waits for a maintainer's approval,
+# so nothing reaches Central without a person saying so. Signing happens in-process (Bouncy Castle):
+# the key is never written to the runner's disk or a keyring.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: The tag names the version being built, and it is a release
+        run: python3 tools/release_version.py "${GITHUB_REF_NAME}"
+      - name: Build, the unit tests, and the jars Central takes, unsigned
+        run: ./mvnw -B -ntp -P release -Dgpg.skip verify
+      - name: Nothing internal in the jars, and the POM is whole
+        run: python3 tools/check_public.py --package target
+
+  maven-central:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: maven-central
+      url: https://central.sonatype.com/artifact/com.mfxhub/mfx-sdk
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      # settings.xml gets a server `central` whose credentials are read from these two variables at
+      # run time; the Portal user token itself is never written to a file.
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+          server-id: central
+          server-username: MAVEN_CENTRAL_USERNAME
+          server-password: MAVEN_CENTRAL_PASSWORD
+      - name: Build, sign and upload; Central validates and publishes, and this waits until it has
+        env:
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_PASSWORD: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          MAVEN_GPG_KEY: ${{ secrets.MAVEN_GPG_PRIVATE_KEY }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+        run: ./mvnw -B -ntp -P release -DskipTests deploy
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jars
+          path: |
+            target/*.jar
+            target/*.asc
+          if-no-files-found: error
+
+  github-release:
+    needs: maven-central
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: jars
+          path: dist/
+      - name: The release, with this version's changelog and its signed jars
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          awk -v v="## ${version}" '$0 == v {on=1; next} /^## / && on {exit} on' CHANGELOG.md > notes.md
+          gh release create "${GITHUB_REF_NAME}" dist/* --title "${GITHUB_REF_NAME}" --notes-file notes.md --verify-tag

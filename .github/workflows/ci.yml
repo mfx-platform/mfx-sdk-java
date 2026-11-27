@@ -1,0 +1,87 @@
+# Every push and pull request: the build with Error Prone and warnings as errors and the unit tests
+# (the surface check and the SDK reference among them) on Linux, Windows and macOS, the shared SDK
+# test suite, and nothing internal in the repository or in the jars Maven Central would get.
+#
+# Actions are pinned to a full commit SHA, with the release it is in the trailing comment, so a
+# moved tag cannot change what runs here. Dependabot proposes the updates.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: test (${{ matrix.os }}, Java ${{ matrix.java }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        java: ["21"]
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+          cache: maven
+      - name: Build and unit tests, warnings as errors
+        run: ./mvnw -B -ntp verify
+
+  conformance:
+    name: shared SDK test suite
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86 # v5.4.2
+      - name: The fake hub's Python environment, from hash-pinned requirements
+        run: |
+          uv venv --python 3.12 .hub
+          uv pip install --python .hub --require-hashes -r conformance/hub-requirements.txt
+      - name: Every case of the suite
+        env:
+          MFX_SUITE_PYTHON: ${{ github.workspace }}/.hub/bin/python
+        run: ./mvnw -B -ntp test -Dgroups=conformance -DexcludedGroups=none
+
+  package:
+    name: the reference passes its checker, and nothing internal is published
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+      - name: docs/sdkref.json passes the shared suite's checker
+        run: python3 conformance/suite/sdkref/check_sdkref.py --spec spec/openapi.yaml docs/sdkref.json
+      - name: The repository
+        run: python3 tools/check_public.py --tree .
+      - name: What Maven Central would get, unsigned
+        run: |
+          ./mvnw -B -ntp -P release -Dgpg.skip -DskipTests package
+          python3 tools/check_public.py --package target

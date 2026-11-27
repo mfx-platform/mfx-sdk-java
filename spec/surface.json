@@ -1,0 +1,5906 @@
+{
+ "about": "the reference every other MFX Hub SDK derives from and is checked against",
+ "errors": [
+  {
+   "code": "auth_error",
+   "error": "AuthError",
+   "phase": "core"
+  },
+  {
+   "code": "billing_payment_required",
+   "error": "BillingPaymentRequiredError",
+   "phase": "core"
+  },
+  {
+   "code": "broker_not_supported",
+   "error": "UnsupportedBrokerError",
+   "phase": "core"
+  },
+  {
+   "code": "conflict",
+   "error": "ConflictError",
+   "phase": "core"
+  },
+  {
+   "code": "dependency_unavailable",
+   "error": "DependencyUnavailableError",
+   "phase": "core"
+  },
+  {
+   "code": "forbidden",
+   "error": "ForbiddenError",
+   "phase": "core"
+  },
+  {
+   "code": "internal_error",
+   "error": "InternalError",
+   "phase": "core"
+  },
+  {
+   "code": "maintenance",
+   "error": "MaintenanceError",
+   "phase": "core"
+  },
+  {
+   "code": "not_found",
+   "error": "NotFoundError",
+   "phase": "core"
+  },
+  {
+   "code": "placement_error",
+   "error": "PlacementError",
+   "phase": "core"
+  },
+  {
+   "code": "rate_limited",
+   "error": "RateLimitError",
+   "phase": "core"
+  },
+  {
+   "code": "risk_override_required",
+   "error": "RiskOverrideRequiredError",
+   "phase": "core"
+  },
+  {
+   "code": "risk_refused",
+   "error": "RiskRefusedError",
+   "phase": "core"
+  },
+  {
+   "code": "service_agreement_not_accepted",
+   "error": "ServiceAgreementNotAccepted",
+   "phase": "core"
+  },
+  {
+   "code": "state_error",
+   "error": "StateError",
+   "phase": "core"
+  },
+  {
+   "code": "tenant_disabled",
+   "error": "TenantDisabledError",
+   "phase": "core"
+  },
+  {
+   "code": "tenant_suspended",
+   "error": "TenantSuspendedError",
+   "phase": "core"
+  },
+  {
+   "code": "terms_not_accepted",
+   "error": "TermsNotAccepted",
+   "phase": "core"
+  },
+  {
+   "code": "upstream_error",
+   "error": "UpstreamError",
+   "phase": "core"
+  },
+  {
+   "code": "validation_error",
+   "error": "ValidationError",
+   "phase": "core"
+  },
+  {
+   "error": "ValidationError",
+   "phase": "core",
+   "status": 400
+  },
+  {
+   "error": "AuthError",
+   "phase": "core",
+   "status": 401
+  },
+  {
+   "error": "PaymentRequiredError",
+   "phase": "core",
+   "status": 402
+  },
+  {
+   "error": "ForbiddenError",
+   "phase": "core",
+   "status": 403
+  },
+  {
+   "error": "NotFoundError",
+   "phase": "core",
+   "status": 404
+  },
+  {
+   "error": "ConflictError",
+   "phase": "core",
+   "status": 409
+  },
+  {
+   "error": "ValidationError",
+   "phase": "core",
+   "status": 422
+  },
+  {
+   "error": "RateLimitError",
+   "phase": "core",
+   "status": 429
+  },
+  {
+   "error": "InternalError",
+   "phase": "core",
+   "status": 500
+  },
+  {
+   "error": "EdgeError",
+   "phase": "core",
+   "status": 502
+  },
+  {
+   "error": "UpstreamError",
+   "phase": "core",
+   "status": 503
+  },
+  {
+   "error": "EdgeError",
+   "phase": "core",
+   "status": 504
+  }
+ ],
+ "events": [
+  {
+   "event": "CandleClosed",
+   "fields": [
+    "c",
+    "h",
+    "l",
+    "o",
+    "prev_ts",
+    "schema_version",
+    "server_id",
+    "symbol",
+    "timeframe",
+    "ts",
+    "v"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyAs",
+   "fields": [
+    "price",
+    "side",
+    "symbol",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyClosed",
+   "fields": [
+    "command_id",
+    "symbol",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyClosedEvent",
+   "fields": [
+    "account_id",
+    "at",
+    "cause",
+    "close_id",
+    "closed",
+    "follower_id",
+    "leader_id",
+    "not_closed",
+    "schema_version",
+    "state",
+    "venue"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyCopied",
+   "fields": [
+    "account_id",
+    "as_",
+    "at",
+    "command_id",
+    "deal",
+    "follower_id",
+    "latency_ms",
+    "leader_id",
+    "schema_version",
+    "signal_id",
+    "slippage",
+    "stages",
+    "venue"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyDeal",
+   "fields": [
+    "action",
+    "instrument_key",
+    "price",
+    "side",
+    "units"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyDrift",
+   "fields": [
+    "account_id",
+    "at",
+    "drift_pct",
+    "follower_id",
+    "leader_id",
+    "schema_version",
+    "venue"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyNotClosed",
+   "fields": [
+    "symbol",
+    "volume",
+    "why"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyRefused",
+   "fields": [
+    "account_id",
+    "at",
+    "deal",
+    "follower_id",
+    "leader_id",
+    "outcome",
+    "reason",
+    "risk",
+    "schema_version",
+    "signal_id",
+    "venue",
+    "venue_code",
+    "why"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyStateChanged",
+   "fields": [
+    "account_id",
+    "at",
+    "follower_id",
+    "from_state",
+    "leader_id",
+    "schema_version",
+    "to_state",
+    "venue",
+    "why"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "CopyStopoutEvent",
+   "fields": [
+    "account_id",
+    "at",
+    "closed",
+    "follower_id",
+    "leader_id",
+    "limit",
+    "schema_version",
+    "stopout_id",
+    "used",
+    "venue"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "OrderClosed",
+   "fields": [
+    "comment",
+    "event_id",
+    "expires_at",
+    "idempotency_key",
+    "magic",
+    "order_state_raw",
+    "order_type",
+    "placed_time",
+    "position_ticket",
+    "price",
+    "reason",
+    "schema_version",
+    "side",
+    "sl",
+    "stop_limit_price",
+    "symbol",
+    "terminal_id",
+    "ticket",
+    "tp",
+    "ts",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "OrderModified",
+   "fields": [
+    "comment",
+    "event_id",
+    "expires_at",
+    "idempotency_key",
+    "magic",
+    "order_type",
+    "placed_time",
+    "price",
+    "schema_version",
+    "side",
+    "sl",
+    "stop_limit_price",
+    "symbol",
+    "terminal_id",
+    "ticket",
+    "tp",
+    "ts",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "OrderPlaced",
+   "fields": [
+    "comment",
+    "event_id",
+    "expires_at",
+    "idempotency_key",
+    "magic",
+    "order_type",
+    "placed_time",
+    "price",
+    "schema_version",
+    "side",
+    "sl",
+    "stop_limit_price",
+    "symbol",
+    "terminal_id",
+    "ticket",
+    "tp",
+    "ts",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "PositionClosed",
+   "fields": [
+    "close_price",
+    "close_reason",
+    "comment",
+    "deal_reason_raw",
+    "event_id",
+    "idempotency_key",
+    "magic",
+    "open_price",
+    "open_time",
+    "price_current",
+    "profit",
+    "schema_version",
+    "side",
+    "sl",
+    "swap",
+    "symbol",
+    "terminal_id",
+    "ticket",
+    "tp",
+    "ts",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "PositionModified",
+   "fields": [
+    "comment",
+    "event_id",
+    "idempotency_key",
+    "magic",
+    "open_price",
+    "open_time",
+    "price_current",
+    "profit",
+    "schema_version",
+    "side",
+    "sl",
+    "swap",
+    "symbol",
+    "terminal_id",
+    "ticket",
+    "tp",
+    "ts",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "PositionOpened",
+   "fields": [
+    "comment",
+    "event_id",
+    "idempotency_key",
+    "magic",
+    "open_price",
+    "open_time",
+    "order_ticket",
+    "price_current",
+    "profit",
+    "schema_version",
+    "side",
+    "sl",
+    "swap",
+    "symbol",
+    "terminal_id",
+    "ticket",
+    "tp",
+    "ts",
+    "volume"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "RiskCoverageChanged",
+   "fields": [
+    "account_id",
+    "at",
+    "coverage",
+    "from_state",
+    "reason",
+    "schema_version",
+    "to_state"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "RiskPeriodClosed",
+   "fields": [
+    "account_id",
+    "at",
+    "challenge_id",
+    "period",
+    "schema_version"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "RiskProgrammeResult",
+   "fields": [
+    "account_id",
+    "at",
+    "challenge_id",
+    "result",
+    "rule",
+    "schema_version",
+    "version"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "RiskRuleEvent",
+   "fields": [
+    "account_id",
+    "actions",
+    "at",
+    "challenge_id",
+    "cleared_by",
+    "kind",
+    "level",
+    "limit",
+    "policy_id",
+    "rule",
+    "schema_version",
+    "used",
+    "version"
+   ],
+   "phase": "enriched"
+  },
+  {
+   "event": "TerminalStateChanged",
+   "fields": [
+    "from_state",
+    "reason",
+    "schema_version",
+    "terminal_id",
+    "to_state",
+    "transition_id",
+    "ts"
+   ],
+   "phase": "enriched"
+  }
+ ],
+ "methods": [
+  {
+   "args": [
+    {
+     "name": "base_url",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "key_id",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "private_key",
+     "required": true,
+     "type": "SigningKey | Ed25519PrivateKey | str | bytes"
+    },
+    {
+     "keyword": true,
+     "name": "timeout_s",
+     "type": "float"
+    },
+    {
+     "keyword": true,
+     "name": "read_retries",
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "transport",
+     "type": "httpx.AsyncBaseTransport | None"
+    },
+    {
+     "keyword": true,
+     "name": "sleep",
+     "type": "Callable[[float], Awaitable[None]] | None"
+    },
+    {
+     "keyword": true,
+     "name": "jitter",
+     "type": "Callable[[float, float], float]"
+    },
+    {
+     "keyword": true,
+     "name": "wall",
+     "type": "Callable[[], float]"
+    },
+    {
+     "keyword": true,
+     "name": "on_call",
+     "type": "Callable[[CallTiming], None] | None"
+    }
+   ],
+   "async": false,
+   "method": "__init__",
+   "phase": "core",
+   "resource": "client",
+   "returns": null
+  },
+  {
+   "phase": "core",
+   "protocol": "__aenter__",
+   "resource": "client"
+  },
+  {
+   "phase": "core",
+   "protocol": "__aexit__",
+   "resource": "client"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "aclose",
+   "phase": "core",
+   "resource": "client",
+   "returns": "None"
+  },
+  {
+   "phase": "core",
+   "property": "base_url",
+   "resource": "client"
+  },
+  {
+   "phase": "core",
+   "property": "budget",
+   "resource": "client"
+  },
+  {
+   "phase": "core",
+   "property": "key_id",
+   "resource": "client"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "connect",
+     "type": "Connector | None"
+    },
+    {
+     "keyword": true,
+     "name": "url",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "max_reconnects",
+     "type": "int | None"
+    }
+   ],
+   "async": false,
+   "method": "stream",
+   "phase": "core",
+   "resource": "client",
+   "returns": "MfxStream"
+  },
+  {
+   "phase": "core",
+   "protocol": "__aenter__",
+   "resource": "stream"
+  },
+  {
+   "phase": "core",
+   "protocol": "__aexit__",
+   "resource": "stream"
+  },
+  {
+   "phase": "core",
+   "protocol": "__aiter__",
+   "resource": "stream"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "aclose",
+   "phase": "core",
+   "resource": "stream",
+   "returns": "None"
+  },
+  {
+   "phase": "core",
+   "property": "channels",
+   "resource": "stream"
+  },
+  {
+   "args": [
+    {
+     "name": "channel",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "resume",
+   "phase": "core",
+   "resource": "stream",
+   "returns": "None"
+  },
+  {
+   "phase": "core",
+   "property": "stats",
+   "resource": "stream"
+  },
+  {
+   "args": [
+    {
+     "name": "channel",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "subscribe",
+   "phase": "core",
+   "resource": "stream",
+   "returns": "None"
+  },
+  {
+   "args": [
+    {
+     "name": "channel",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "unsubscribe",
+   "phase": "core",
+   "resource": "stream",
+   "returns": "None"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "account",
+   "phase": "enriched",
+   "resource": "accounts",
+   "returns": "Account"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "deals",
+   "phase": "enriched",
+   "resource": "accounts",
+   "returns": "Page[Deal]"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "pending_orders",
+   "phase": "enriched",
+   "resource": "accounts",
+   "returns": "PendingOrderList"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "positions",
+   "phase": "enriched",
+   "resource": "accounts",
+   "returns": "PositionList"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "spread",
+   "phase": "enriched",
+   "resource": "accounts",
+   "returns": "SpreadList"
+  },
+  {
+   "args": [
+    {
+     "name": "profile_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "month",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "forecast",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "BillingForecast"
+  },
+  {
+   "args": [
+    {
+     "name": "invoice_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "invoice",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "BillingInvoiceDetail"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "billing_profile_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "InvoiceState | Sequence[InvoiceState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "invoices",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "AsyncIterator[BillingInvoice]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "billing_profile_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "InvoiceState | Sequence[InvoiceState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "invoices_page",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "BillingInvoicePage"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "price_list",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "BillingPriceList"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "prices",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "BillingPriceList"
+  },
+  {
+   "args": [
+    {
+     "name": "profile_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "profile",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "BillingProfile"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "summary",
+   "phase": "enriched",
+   "resource": "billing",
+   "returns": "BillingSummary"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "all_brokers",
+   "phase": "enriched",
+   "resource": "catalog",
+   "returns": "AsyncIterator[TenantBroker]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "brokers",
+   "phase": "enriched",
+   "resource": "catalog",
+   "returns": "Page[TenantBroker]"
+  },
+  {
+   "args": [
+    {
+     "name": "broker_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "catalogues",
+   "phase": "enriched",
+   "resource": "catalog",
+   "returns": "list[BrokerCatalogue]"
+  },
+  {
+   "args": [
+    {
+     "name": "broker_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "server_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_type",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "quote",
+   "phase": "enriched",
+   "resource": "catalog",
+   "returns": "SymbolQuote"
+  },
+  {
+   "args": [
+    {
+     "name": "broker_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "servers",
+   "phase": "enriched",
+   "resource": "catalog",
+   "returns": "Page[TenantBrokerServer]"
+  },
+  {
+   "args": [
+    {
+     "name": "broker_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "server_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_type",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "symbol",
+   "phase": "enriched",
+   "resource": "catalog",
+   "returns": "Symbol"
+  },
+  {
+   "args": [
+    {
+     "name": "broker_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "server_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_type",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "symbols",
+   "phase": "enriched",
+   "resource": "catalog",
+   "returns": "Page[Symbol]"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "follower_ids",
+     "required": true,
+     "type": "Sequence[Id]"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "add_group_followers",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroupMembersResult"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "follower_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "batch_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "CloseStateName | Sequence[CloseStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "all_closes",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopyClose]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "FollowerStateName | Sequence[FollowerStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "out_of_step",
+     "type": "bool | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "NewestOrOldest"
+    }
+   ],
+   "async": true,
+   "method": "all_followers",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopyFollower]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "GroupStateName | None"
+    }
+   ],
+   "async": true,
+   "method": "all_groups",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopyGroup]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "LeaderStateName | Sequence[LeaderStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "source",
+     "type": "LeaderSourceName | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | None"
+    }
+   ],
+   "async": true,
+   "method": "all_leaders",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopyLeader]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "follower_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "signal_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "outcome",
+     "type": "CopyOutcomeName | Sequence[CopyOutcomeName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "type": "RefusalReason | Sequence[RefusalReason] | None"
+    },
+    {
+     "keyword": true,
+     "name": "venue",
+     "type": "Literal['mt5', 'ctrader'] | Sequence[Literal['mt5', 'ctrader']] | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "CopyLogSort | None"
+    }
+   ],
+   "async": true,
+   "method": "all_log",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopyLogEntry]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "kind",
+     "type": "SignalKindName | Sequence[SignalKindName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "action",
+     "type": "SignalActionName | Sequence[SignalActionName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "all_signals",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopySignalEntry]"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "StopoutStateName | Sequence[StopoutStateName] | None"
+    }
+   ],
+   "async": true,
+   "method": "all_stopouts",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopyStopout]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "StopoutStateName | Sequence[StopoutStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "follower_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "all_tenant_stopouts",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "AsyncIterator[CopyStopout]"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "pause",
+     "required": true,
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "close_group",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroupCloseResult"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "follower_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "batch_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "CloseStateName | Sequence[CloseStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "closes",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPage[CopyClose, CopyClosePageStats]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "scaling",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "bounds",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "symbol_map",
+     "type": "Mapping[str, str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "options",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "risk_limits",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "close_on_stopout",
+     "type": "bool | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    }
+   ],
+   "async": true,
+   "method": "create_follower",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "name",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "template",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "gross_exposure_cap",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "placement_policy",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "create_group",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroup"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "source",
+     "required": true,
+     "type": "LeaderSourceName"
+    },
+    {
+     "keyword": true,
+     "name": "signal_lifetime_s",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "filters",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "copies",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "limits",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "who_may_join",
+     "type": "Setting | None"
+    }
+   ],
+   "async": true,
+   "method": "create_leader",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyLeader"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "FollowerStateName | Sequence[FollowerStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "out_of_step",
+     "type": "bool | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "NewestOrOldest"
+    }
+   ],
+   "async": true,
+   "method": "followers",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPage[CopyFollower, CopyFollowerPageStats]"
+  },
+  {
+   "args": [
+    {
+     "name": "close_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get_close",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyClose"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get_follower",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get_group",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroup"
+  },
+  {
+   "args": [
+    {
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get_leader",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyLeader"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "GroupStateName | None"
+    }
+   ],
+   "async": true,
+   "method": "groups",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPage[CopyGroup, CopyGroupPageStats]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "LeaderStateName | Sequence[LeaderStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "source",
+     "type": "LeaderSourceName | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | None"
+    }
+   ],
+   "async": true,
+   "method": "leaders",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPage[CopyLeader, CopyLeaderPageStats]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "follower_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "signal_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "outcome",
+     "type": "CopyOutcomeName | Sequence[CopyOutcomeName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "type": "RefusalReason | Sequence[RefusalReason] | None"
+    },
+    {
+     "keyword": true,
+     "name": "venue",
+     "type": "Literal['mt5', 'ctrader'] | Sequence[Literal['mt5', 'ctrader']] | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "CopyLogSort | None"
+    }
+   ],
+   "async": true,
+   "method": "log",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPage[CopyLogEntry, CopyLogPageStats]"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "pause_follower",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "pause_group",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroup"
+  },
+  {
+   "args": [
+    {
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "pause_leader",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyLeader"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "scaling",
+     "required": true,
+     "type": "Setting"
+    },
+    {
+     "keyword": true,
+     "name": "rows",
+     "required": true,
+     "type": "Sequence[Setting]"
+    },
+    {
+     "keyword": true,
+     "name": "bounds",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "symbol_map",
+     "type": "Mapping[str, str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "options",
+     "type": "Setting | None"
+    }
+   ],
+   "async": true,
+   "method": "preview_follower",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPreview"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "follower_ids",
+     "required": true,
+     "type": "Sequence[Id]"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "remove_group_followers",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroupMembersResult"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "LimitKindName | None"
+    }
+   ],
+   "async": true,
+   "method": "reset_stopouts",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "resume_follower",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "resume_group",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroup"
+  },
+  {
+   "args": [
+    {
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "resume_leader",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyLeader"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "resync_follower",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "close_copied",
+     "required": true,
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "retire_leader",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyLeader"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "dry_run",
+     "required": true,
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "fields",
+     "type": "Sequence[RolloverField] | None"
+    },
+    {
+     "keyword": true,
+     "name": "after",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "rollover_group",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroupRolloverResult"
+  },
+  {
+   "args": [
+    {
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "id_",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "close",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "time",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "send_close_signal",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopySignalAccepted"
+  },
+  {
+   "args": [
+    {
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "id_",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "side",
+     "required": true,
+     "type": "Literal['buy', 'sell']"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "volume",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "units",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "instrument_key",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "sl",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "tp",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "time",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "account",
+     "type": "Setting | None"
+    }
+   ],
+   "async": true,
+   "method": "send_open_signal",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopySignalAccepted"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "leader_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "kind",
+     "type": "SignalKindName | Sequence[SignalKindName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "action",
+     "type": "SignalActionName | Sequence[SignalActionName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "signals",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPage[CopySignalEntry, CopySignalPageStats]"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "StopoutStateName | Sequence[StopoutStateName] | None"
+    }
+   ],
+   "async": true,
+   "method": "stopouts",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "Page[CopyStopout]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "StopoutStateName | Sequence[StopoutStateName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "follower_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "group_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "tenant_stopouts",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyPage[CopyStopout, CopyTenantStopoutPageStats]"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "close_copied",
+     "required": true,
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "unfollow",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "name": "follower_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "scaling",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "bounds",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "symbol_map",
+     "type": "Mapping[str, str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "options",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "risk_limits",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "close_on_stopout",
+     "type": "bool | None"
+    }
+   ],
+   "async": true,
+   "method": "update_follower",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyFollower"
+  },
+  {
+   "args": [
+    {
+     "name": "group_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "name",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "template",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "gross_exposure_cap",
+     "type": "Amount | None | _Omit"
+    },
+    {
+     "keyword": true,
+     "name": "placement_policy",
+     "type": "str | None | _Omit"
+    }
+   ],
+   "async": true,
+   "method": "update_group",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyGroup"
+  },
+  {
+   "args": [
+    {
+     "name": "leader_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "filters",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "copies",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "signal_lifetime_s",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "limits",
+     "type": "Setting | None"
+    },
+    {
+     "keyword": true,
+     "name": "who_may_join",
+     "type": "Setting | None"
+    }
+   ],
+   "async": true,
+   "method": "update_leader",
+   "phase": "enriched",
+   "resource": "copy",
+   "returns": "CopyLeader"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "cancel_order",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "clear_trailing_stop",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "deviation_points",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "comment",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "close_position",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "name": "by_ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "close_position_by",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "volume",
+     "required": true,
+     "type": "Amount"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "deviation_points",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "comment",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "close_position_partial",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "command_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "get_command",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "stop_limit_price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "sl",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "tp",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "expires_at",
+     "type": "dt.datetime | None | _Keep"
+    }
+   ],
+   "async": true,
+   "method": "modify_order",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "sl",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "tp",
+     "type": "Amount | None"
+    }
+   ],
+   "async": true,
+   "method": "modify_position",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "side",
+     "required": true,
+     "type": "Side"
+    },
+    {
+     "keyword": true,
+     "name": "volume",
+     "required": true,
+     "type": "Amount"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "order_type",
+     "type": "OrderType"
+    },
+    {
+     "keyword": true,
+     "name": "price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "stop_limit_price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "sl",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "tp",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "deviation_points",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "expires_at",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "magic",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "comment",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "place_order",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "distance",
+     "required": true,
+     "type": "Amount"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "set_trailing_stop",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "command_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "timeout_s",
+     "type": "float"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "wait_for",
+   "phase": "enriched",
+   "resource": "execution",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "expert_advisor_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "delete",
+   "phase": "enriched",
+   "resource": "expert_advisors",
+   "returns": "TenantExpertAdvisor"
+  },
+  {
+   "args": [
+    {
+     "name": "expert_advisor_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get",
+   "phase": "enriched",
+   "resource": "expert_advisors",
+   "returns": "TenantExpertAdvisor"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "list",
+   "phase": "enriched",
+   "resource": "expert_advisors",
+   "returns": "AsyncIterator[TenantExpertAdvisor]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "page",
+   "phase": "enriched",
+   "resource": "expert_advisors",
+   "returns": "Page[TenantExpertAdvisor]"
+  },
+  {
+   "args": [
+    {
+     "name": "expert_advisor_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "report",
+   "phase": "enriched",
+   "resource": "expert_advisors",
+   "returns": "EaReport"
+  },
+  {
+   "args": [
+    {
+     "name": "name",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "files",
+     "required": true,
+     "type": "Mapping[str, bytes | str]"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "upload",
+   "phase": "enriched",
+   "resource": "expert_advisors",
+   "returns": "TenantExpertAdvisor"
+  },
+  {
+   "args": [
+    {
+     "name": "expert_advisor_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "timeout_s",
+     "type": "float"
+    }
+   ],
+   "async": true,
+   "method": "wait_for_verdict",
+   "phase": "enriched",
+   "resource": "expert_advisors",
+   "returns": "TenantExpertAdvisor"
+  },
+  {
+   "args": [
+    {
+     "name": "farm_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get",
+   "phase": "enriched",
+   "resource": "farms",
+   "returns": "TenantFarm"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "list",
+   "phase": "enriched",
+   "resource": "farms",
+   "returns": "AsyncIterator[TenantFarm]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "page",
+   "phase": "enriched",
+   "resource": "farms",
+   "returns": "Page[TenantFarm]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "WindowState | Sequence[WindowState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "list",
+   "phase": "enriched",
+   "resource": "maintenance",
+   "returns": "AsyncIterator[TenantMaintenance]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "WindowState | Sequence[WindowState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "page",
+   "phase": "enriched",
+   "resource": "maintenance",
+   "returns": "Page[TenantMaintenance]"
+  },
+  {
+   "args": [
+    {
+     "name": "window_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "terminals",
+   "phase": "enriched",
+   "resource": "maintenance",
+   "returns": "AsyncIterator[TenantMaintenanceTerminal]"
+  },
+  {
+   "args": [
+    {
+     "name": "window_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "terminals_page",
+   "phase": "enriched",
+   "resource": "maintenance",
+   "returns": "Page[TenantMaintenanceTerminal]"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "timeframe",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "account_candles",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "CandleList"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "account_subscriptions",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "Page[AccountMdSubscription]"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "all_account_subscriptions",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "AsyncIterator[AccountMdSubscription]"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "all_subscriptions",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "AsyncIterator[MdSubscription]"
+  },
+  {
+   "args": [
+    {
+     "name": "broker",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "page_size",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "server_id",
+     "type": "Id | None"
+    }
+   ],
+   "async": true,
+   "method": "all_ticks",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "AsyncIterator[Tick]"
+  },
+  {
+   "args": [
+    {
+     "name": "broker",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "timeframe",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "server_id",
+     "type": "Id | None"
+    }
+   ],
+   "async": true,
+   "method": "candles",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "CandleList"
+  },
+  {
+   "args": [
+    {
+     "name": "server_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "timeframes",
+     "type": "list[str] | None"
+    }
+   ],
+   "async": true,
+   "method": "subscribe",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "MdSubscription"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "subscribe_account",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "AccountMdSubscription"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "subscriptions",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "Page[MdSubscription]"
+  },
+  {
+   "args": [
+    {
+     "name": "broker",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "server_id",
+     "type": "Id | None"
+    }
+   ],
+   "async": true,
+   "method": "ticks",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "TickList"
+  },
+  {
+   "args": [
+    {
+     "name": "subscription_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "unsubscribe",
+   "phase": "enriched",
+   "resource": "md",
+   "returns": "None"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "account",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskAccount"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "coverage",
+     "type": "Coverage | Sequence[Coverage] | None"
+    },
+    {
+     "keyword": true,
+     "name": "restriction",
+     "type": "Restriction | Sequence[Restriction] | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "AccountSort"
+    }
+   ],
+   "async": true,
+   "method": "accounts",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "AsyncIterator[RiskAccount]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "coverage",
+     "type": "Coverage | Sequence[Coverage] | None"
+    },
+    {
+     "keyword": true,
+     "name": "restriction",
+     "type": "Restriction | Sequence[Restriction] | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "AccountSort"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "accounts_page",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskAccountPage"
+  },
+  {
+   "args": [
+    {
+     "name": "policy_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "account_ids",
+     "required": true,
+     "type": "Sequence[Id]"
+    },
+    {
+     "keyword": true,
+     "name": "version",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "activate",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskActivationResult"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "kind",
+     "type": "str | Sequence[str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | Sequence[Id] | None"
+    },
+    {
+     "keyword": true,
+     "name": "outcome",
+     "type": "str | Sequence[str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "start",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "end",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "ActivitySort"
+    }
+   ],
+   "async": true,
+   "method": "activity",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "AsyncIterator[RiskActivity]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "kind",
+     "type": "str | Sequence[str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | Sequence[Id] | None"
+    },
+    {
+     "keyword": true,
+     "name": "outcome",
+     "type": "str | Sequence[str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "start",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "end",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "ActivitySort"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "activity_page",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskActivityPage"
+  },
+  {
+   "args": [
+    {
+     "name": "challenge_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "rules",
+     "required": true,
+     "type": "RiskChallengeRules | Body"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "add_challenge_version",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskChallenge"
+  },
+  {
+   "args": [
+    {
+     "name": "policy_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "rules",
+     "required": true,
+     "type": "Body"
+    },
+    {
+     "keyword": true,
+     "name": "reset",
+     "required": true,
+     "type": "Body"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "add_policy_version",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPolicyVersion"
+  },
+  {
+   "args": [
+    {
+     "name": "plan_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "steps",
+     "required": true,
+     "type": "Sequence[Body]"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "amend_plan",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPlan"
+  },
+  {
+   "args": [
+    {
+     "name": "challenge_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "archive_challenge",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskChallenge"
+  },
+  {
+   "args": [
+    {
+     "name": "policy_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "archive_policy",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPolicy"
+  },
+  {
+   "args": [
+    {
+     "name": "challenge_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "challenge",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskChallenge"
+  },
+  {
+   "args": [
+    {
+     "name": "challenge_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "challenge_account",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskChallengeAccountDetail"
+  },
+  {
+   "args": [
+    {
+     "name": "challenge_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "ChallengeState | Sequence[ChallengeState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "rule",
+     "type": "ChallengeRule | Sequence[ChallengeRule] | None"
+    },
+    {
+     "keyword": true,
+     "name": "below_min_days",
+     "type": "bool | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "ChallengeSort"
+    }
+   ],
+   "async": true,
+   "method": "challenge_accounts",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "AsyncIterator[RiskChallengeAccount]"
+  },
+  {
+   "args": [
+    {
+     "name": "challenge_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "ChallengeState | Sequence[ChallengeState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "rule",
+     "type": "ChallengeRule | Sequence[ChallengeRule] | None"
+    },
+    {
+     "keyword": true,
+     "name": "below_min_days",
+     "type": "bool | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "ChallengeSort"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "challenge_accounts_page",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskChallengeAccountPage"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": false,
+   "method": "challenges",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "AsyncIterator[RiskChallenge]"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "order",
+     "required": true,
+     "type": "Body"
+    }
+   ],
+   "async": true,
+   "method": "check",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskCheckResult"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "rule",
+     "required": true,
+     "type": "Literal['daily_loss', 'drawdown', 'restriction']"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "clear",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "Any"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "scope",
+     "required": true,
+     "type": "CloseScope"
+    }
+   ],
+   "async": true,
+   "method": "close_scope",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskCloseScope"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "coverage",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskCoverageSummary"
+  },
+  {
+   "args": [
+    {
+     "name": "name",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "rules",
+     "required": true,
+     "type": "RiskChallengeRules | Body"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "create_challenge",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskChallenge"
+  },
+  {
+   "args": [
+    {
+     "name": "plan",
+     "required": true,
+     "type": "RiskPlanCreate | Body"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "create_plan",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPlan"
+  },
+  {
+   "args": [
+    {
+     "name": "name",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "rules",
+     "required": true,
+     "type": "Body"
+    },
+    {
+     "keyword": true,
+     "name": "reset",
+     "required": true,
+     "type": "Body"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "create_policy",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPolicy"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "deactivate",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "Any"
+  },
+  {
+   "args": [
+    {
+     "name": "plan_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "end_plan",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPlan"
+  },
+  {
+   "args": [
+    {
+     "name": "challenge_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "account_ids",
+     "required": true,
+     "type": "Sequence[Id]"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "enrol",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "Any"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "start",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "name": "end",
+     "type": "dt.datetime | None"
+    }
+   ],
+   "async": true,
+   "method": "equity",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskEquitySeries"
+  },
+  {
+   "args": [
+    {
+     "name": "plan_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "pause_plan",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPlan"
+  },
+  {
+   "args": [
+    {
+     "name": "plan_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "plan",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPlan"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | Sequence[Id] | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "PlanState | Sequence[PlanState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "TimeSort"
+    }
+   ],
+   "async": false,
+   "method": "plans",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "AsyncIterator[RiskPlan]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "account_id",
+     "type": "Id | Sequence[Id] | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "PlanState | Sequence[PlanState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "TimeSort"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "plans_page",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPlanPage"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "Literal['active', 'archived'] | None"
+    },
+    {
+     "keyword": true,
+     "name": "sort",
+     "type": "TimeSort"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": false,
+   "method": "policies",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "AsyncIterator[RiskPolicy]"
+  },
+  {
+   "args": [
+    {
+     "name": "policy_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "policy",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPolicy"
+  },
+  {
+   "args": [
+    {
+     "name": "policy_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "version",
+     "required": true,
+     "type": "int"
+    }
+   ],
+   "async": true,
+   "method": "policy_version",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPolicyVersion"
+  },
+  {
+   "args": [
+    {
+     "name": "policy_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": false,
+   "method": "policy_versions",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "AsyncIterator[Any]"
+  },
+  {
+   "args": [
+    {
+     "name": "request",
+     "required": true,
+     "type": "RiskPreviewRequest | Body"
+    }
+   ],
+   "async": true,
+   "method": "preview",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPreview"
+  },
+  {
+   "args": [
+    {
+     "name": "plan_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "resume_plan",
+   "phase": "enriched",
+   "resource": "risk",
+   "returns": "RiskPlan"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "contacts",
+   "phase": "enriched",
+   "resource": "tenant",
+   "returns": "OwnContacts"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "service_agreement",
+   "phase": "enriched",
+   "resource": "tenant",
+   "returns": "TenantServiceAgreement"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "expert_advisor_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "timeframe",
+     "required": true,
+     "type": "Timeframe"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "queue",
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "confirm_open_positions",
+     "type": "bool"
+    }
+   ],
+   "async": true,
+   "method": "attach_expert_advisor",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "OperationAccepted"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "farm_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "broker_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "terminal_ids",
+     "type": "Sequence[Id] | None"
+    },
+    {
+     "keyword": true,
+     "name": "confirm_open_positions",
+     "type": "bool"
+    }
+   ],
+   "async": true,
+   "method": "bulk_restart",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "BulkAction"
+  },
+  {
+   "args": [
+    {
+     "name": "bulk_action_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "cancel_bulk_action",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "BulkAction"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "code",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "confirm_expert_advisor",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "ExpertAdvisorAttachment"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "broker_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "server_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "farm_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "streaming",
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "execution",
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "instruments",
+     "type": "list[str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "labels",
+     "type": "dict[str, str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "redundancy",
+     "type": "Redundancy"
+    }
+   ],
+   "async": true,
+   "method": "create",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TenantTerminal"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "queue",
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "confirm_open_positions",
+     "type": "bool"
+    }
+   ],
+   "async": true,
+   "method": "detach_expert_advisor",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "OperationAccepted"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "confirm_open_positions",
+     "type": "bool"
+    }
+   ],
+   "async": true,
+   "method": "drain",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TenantTerminal"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get",
+   "phase": "core",
+   "resource": "terminals",
+   "returns": "TenantTerminal"
+  },
+  {
+   "args": [
+    {
+     "name": "bulk_action_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get_bulk_action",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "BulkAction"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "operation_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get_operation",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TerminalOperation"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "lines",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "journal",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TerminalJournal"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "label",
+     "type": "Mapping[str, str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "TerminalStateName | Sequence[TerminalStateName] | None"
+    }
+   ],
+   "async": true,
+   "method": "list",
+   "phase": "core",
+   "resource": "terminals",
+   "returns": "AsyncIterator[TenantTerminal]"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "label",
+     "type": "Mapping[str, str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "TerminalStateName | Sequence[TerminalStateName] | None"
+    }
+   ],
+   "async": true,
+   "method": "page",
+   "phase": "core",
+   "resource": "terminals",
+   "returns": "Page[TenantTerminal]"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "instruments",
+     "required": true,
+     "type": "Sequence[str]"
+    },
+    {
+     "keyword": true,
+     "name": "depth_instruments",
+     "type": "Sequence[str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "replace_instruments",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TenantTerminal"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "reason",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "confirm_open_positions",
+     "type": "bool"
+    },
+    {
+     "keyword": true,
+     "name": "queue",
+     "type": "bool"
+    }
+   ],
+   "async": true,
+   "method": "restart",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "OperationAccepted"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "resume",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TenantTerminal"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "retire",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TenantTerminal"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "login",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "password",
+     "required": true,
+     "type": "Secret | str"
+    },
+    {
+     "keyword": true,
+     "name": "server",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "cred_type",
+     "type": "CredentialType"
+    }
+   ],
+   "async": true,
+   "method": "submit_credentials",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "CredentialAccepted"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "operation_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "timeout_s",
+     "type": "float"
+    }
+   ],
+   "async": true,
+   "method": "wait_for_operation",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TerminalOperation"
+  },
+  {
+   "args": [
+    {
+     "name": "terminal_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "timeout_s",
+     "type": "float"
+    }
+   ],
+   "async": true,
+   "method": "wait_until_active",
+   "phase": "enriched",
+   "resource": "terminals",
+   "returns": "TenantTerminal"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "cancel_order",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "clear_trailing_stop",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "deviation_points",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "comment",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "close_position",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "name": "by_ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "close_position_by",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "volume",
+     "required": true,
+     "type": "Amount"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "deviation_points",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "comment",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "close_position_partial",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "grant_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ctid_trader_account_ids",
+     "required": true,
+     "type": "Sequence[str | int]"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "connect_ctrader_accounts",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "builtins.list[TradingAccount]"
+  },
+  {
+   "args": [
+    {
+     "name": "grant_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "ctrader_grant",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "CtraderGrant"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "from_",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "to",
+     "required": true,
+     "type": "dt.datetime"
+    },
+    {
+     "keyword": true,
+     "name": "position",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "deals",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "Page[Deal]"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "funds",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "Account"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "TradingAccount"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "venue",
+     "type": "VenueName | Sequence[VenueName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "environment",
+     "type": "AccountEnvironment | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "AccountStateName | Sequence[AccountStateName] | None"
+    }
+   ],
+   "async": true,
+   "method": "list",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "AsyncIterator[TradingAccount]"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "stop_limit_price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "sl",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "tp",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "expires_at",
+     "type": "dt.datetime | None | _Keep"
+    }
+   ],
+   "async": true,
+   "method": "modify_order",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "sl",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "tp",
+     "type": "Amount | None"
+    }
+   ],
+   "async": true,
+   "method": "modify_position",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "cursor",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "venue",
+     "type": "VenueName | Sequence[VenueName] | None"
+    },
+    {
+     "keyword": true,
+     "name": "environment",
+     "type": "AccountEnvironment | None"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "AccountStateName | Sequence[AccountStateName] | None"
+    }
+   ],
+   "async": true,
+   "method": "page",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "Page[TradingAccount]"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "pending_orders",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "PendingOrderList"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "symbol",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "side",
+     "required": true,
+     "type": "Side"
+    },
+    {
+     "keyword": true,
+     "name": "volume",
+     "required": true,
+     "type": "Amount"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "order_type",
+     "type": "OrderType"
+    },
+    {
+     "keyword": true,
+     "name": "price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "stop_limit_price",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "sl",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "tp",
+     "type": "Amount | None"
+    },
+    {
+     "keyword": true,
+     "name": "deviation_points",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "expires_at",
+     "type": "dt.datetime | None"
+    },
+    {
+     "keyword": true,
+     "name": "magic",
+     "type": "int | None"
+    },
+    {
+     "keyword": true,
+     "name": "comment",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "place_order",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "positions",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "PositionList"
+  },
+  {
+   "args": [
+    {
+     "name": "grant_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "revoke_ctrader_grant",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "CtraderGrant"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "name": "ticket",
+     "required": true,
+     "type": "int"
+    },
+    {
+     "keyword": true,
+     "name": "distance",
+     "required": true,
+     "type": "Amount"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "set_trailing_stop",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "ExecutionResult"
+  },
+  {
+   "args": [
+    {
+     "keyword": true,
+     "name": "environment",
+     "required": true,
+     "type": "AccountEnvironment"
+    },
+    {
+     "keyword": true,
+     "name": "scope",
+     "required": true,
+     "type": "GrantScope"
+    },
+    {
+     "keyword": true,
+     "name": "return_url",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "keyword": true,
+     "name": "tenant_state",
+     "type": "str | None"
+    }
+   ],
+   "async": true,
+   "method": "start_ctrader_grant",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "CtraderGrantStarted"
+  },
+  {
+   "args": [
+    {
+     "name": "account_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "symbols",
+   "phase": "enriched",
+   "resource": "trading_accounts",
+   "returns": "TradingSymbolList"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "get",
+   "phase": "enriched",
+   "resource": "usage",
+   "returns": "Usage"
+  },
+  {
+   "args": [
+    {
+     "name": "url",
+     "required": true,
+     "type": "str"
+    },
+    {
+     "name": "event_types",
+     "required": true,
+     "type": "Sequence[str]"
+    },
+    {
+     "keyword": true,
+     "name": "description",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "create",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "WebhookEndpointCreated"
+  },
+  {
+   "args": [
+    {
+     "name": "endpoint_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "delete",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "None"
+  },
+  {
+   "args": [
+    {
+     "name": "endpoint_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "state",
+     "type": "FailureState | Sequence[FailureState] | None"
+    },
+    {
+     "keyword": true,
+     "name": "limit",
+     "type": "int | None"
+    }
+   ],
+   "async": true,
+   "method": "failures",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "AsyncIterator[WebhookFailure]"
+  },
+  {
+   "args": [
+    {
+     "name": "endpoint_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "get",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "WebhookEndpoint"
+  },
+  {
+   "args": [],
+   "async": true,
+   "method": "list",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "list[WebhookEndpoint]"
+  },
+  {
+   "args": [
+    {
+     "name": "endpoint_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "after",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "failure_id",
+     "type": "Id | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "replay",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "WebhookReplayAccepted"
+  },
+  {
+   "args": [
+    {
+     "name": "endpoint_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "rotate_secret",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "WebhookSecretRotated"
+  },
+  {
+   "args": [
+    {
+     "name": "endpoint_id",
+     "required": true,
+     "type": "Id"
+    }
+   ],
+   "async": true,
+   "method": "test",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "WebhookTestAccepted"
+  },
+  {
+   "args": [
+    {
+     "name": "endpoint_id",
+     "required": true,
+     "type": "Id"
+    },
+    {
+     "keyword": true,
+     "name": "url",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "event_types",
+     "type": "Sequence[str] | None"
+    },
+    {
+     "keyword": true,
+     "name": "description",
+     "type": "str | None"
+    },
+    {
+     "keyword": true,
+     "name": "paused",
+     "type": "bool | None"
+    },
+    {
+     "keyword": true,
+     "name": "idempotency_key",
+     "required": true,
+     "type": "str"
+    }
+   ],
+   "async": true,
+   "method": "update",
+   "phase": "enriched",
+   "resource": "webhooks",
+   "returns": "WebhookEndpoint"
+  }
+ ],
+ "sdk": "mfx-sdk",
+ "version": "0.19.0"
+}

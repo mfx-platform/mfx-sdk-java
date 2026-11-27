@@ -1,0 +1,65 @@
+{
+  "about": "Which page of the SDK reference (docs/sdkref.json, format mfx-sdkref/1) each public type of com.mfxhub.sdk is on, in display order, with the page's Java intro. Page ids and their order are the shared page list's; a page's title and summary are not here, because the docs site takes them from that list. A nested type follows the type it is in. Every public type is on exactly one page: the generator refuses one that is on none.",
+  "pages": [
+    {
+      "id": "client",
+      "intro": "`MfxClient` signs every request with your Ed25519 key, retries reads within a budget and opens the stream. Build one with `MfxClient.builder(baseUrl, keyId, signingKey)` and close it with try-with-resources. Every call is asynchronous and returns a `CompletableFuture`; a list is also an `Iterable` that follows the cursor.",
+      "types": ["MfxClient", "Signing", "SigningKey", "RequestSigner", "Secret", "Transport", "Pause", "CallTiming", "Budget", "Page", "TimeSort", "MfxJson"]
+    },
+    {
+      "id": "terminals",
+      "intro": "`client.terminals()` provisions, reads, restarts, drains and retires the terminals your key's tenant owns; `client.farms()`, `client.maintenance()` and `client.expertAdvisors()` say where they run, when they pause and which expert advisors they carry.",
+      "types": ["Terminals", "CreateTerminal", "ListTerminals", "DrainTerminal", "Relaunch", "BulkRestart", "Farms", "Maintenance", "ListMaintenance", "ExpertAdvisors"]
+    },
+    {
+      "id": "execution",
+      "intro": "`client.execution()` places and changes orders. Every method completes with an `ExecutionResult` and never exceptionally: a timeout, a refusal and a broker rejection are all results with a reason. Decimals are `BigDecimal`, and the idempotency key is always yours.",
+      "types": ["Execution", "PlaceOrder", "ModifyOrder", "ModifyPosition", "ExecutionResult", "CommandState", "Reason", "Tickets", "VenueDeal"]
+    },
+    {
+      "id": "trading-accounts",
+      "intro": "`client.tradingAccounts()` reads and trades the accounts your tenant holds on every venue, with the same commands as `execution()`.",
+      "types": ["TradingAccounts", "ListTradingAccounts"]
+    },
+    {
+      "id": "accounts",
+      "intro": "`client.accounts()` reads what a terminal sees of its account; `client.catalog()` says which brokers, servers and symbols you can point a terminal at; `client.usage()` says how much of each limit is used.",
+      "types": ["Accounts", "Catalog", "WhichServer", "UsageReader"]
+    },
+    {
+      "id": "market-data",
+      "intro": "`client.md()` subscribes to ticks, depth and candles, delivered on the stream, and reads history.",
+      "types": ["MarketData", "Timeframe", "Book", "CandleClosed", "SubscriptionHealth", "SubscriptionDegraded", "SubscriptionRecovered"]
+    },
+    {
+      "id": "stream",
+      "intro": "`client.stream()` opens one WebSocket for many channels, resumable by sequence number across reconnects. `MfxStream` is an `Iterable` of `StreamEvent`; `Events.eventOf` reads a message as its typed event, and `LiveAccount` keeps an account's view current from it.",
+      "types": ["MfxStream", "StreamOptions", "StreamEvent", "StreamStats", "StreamConnector", "StreamConnection", "Channel", "Events", "Event", "OrderPlaced", "OrderModified", "OrderClosed", "PositionOpened", "PositionModified", "PositionClosed", "TerminalStateChanged", "EaMessage", "EaTelemetry", "EaTelemetryLost", "EaRecord", "LiveAccount", "AccountView"]
+    },
+    {
+      "id": "risk",
+      "intro": "`client.risk()` manages risk policies, challenge plans and the accounts they cover, and reads what the rules did.",
+      "types": ["Risk", "ListRiskPolicies", "ListRiskPlans", "ListRiskAccounts", "ListChallengeAccounts", "ListRiskActivity", "RiskRefusal", "RiskRuleEvent", "RiskCoverageChanged", "RiskPeriodClosed", "RiskProgrammeResult"]
+    },
+    {
+      "id": "copy",
+      "intro": "`client.copy()` runs copy trading: leaders, followers and their mandates, groups, signals, and what each copy did.",
+      "types": ["Copy", "CreateLeader", "UpdateLeader", "ListCopyLeaders", "FollowerMandate", "PreviewFollower", "ListCopyFollowers", "CreateGroup", "UpdateGroup", "ListCopyGroups", "RolloverGroup", "RolloverField", "OpenSignal", "ListCopySignals", "ListCopyLog", "ListCopyCloses", "ListCopyStopouts", "ListTenantStopouts", "CopyPage", "CopyAs", "CopyClosed", "CopyNotClosed", "CopyDeal", "CopyCopied", "CopyRefused", "CopyDrift", "CopyClosedEvent", "CopyStateChanged", "CopyStopoutEvent"]
+    },
+    {
+      "id": "billing",
+      "intro": "`client.billing()` reads the billing standing and the invoices, and says what clears a payment that is due.",
+      "types": ["Billing", "ListInvoices", "PaymentAction"]
+    },
+    {
+      "id": "tenant",
+      "intro": "`client.tenant()` reads what your organisation must accept; `client.webhooks()` manages webhook endpoints and verifies each delivery.",
+      "types": ["Tenant", "DueDocument", "Webhooks", "UpdateWebhook", "ReplayWebhook"]
+    },
+    {
+      "id": "errors",
+      "intro": "A read or a write that the platform refuses completes exceptionally with an `MfxApiException` of the kind its code names; a fault on the way is an `MfxTransportException`. Execution methods never complete exceptionally: they complete with a result. Every exception is unchecked.",
+      "types": ["MfxException", "MfxApiException", "ValidationException", "RiskRefusedException", "AuthException", "PaymentRequiredException", "BillingPaymentRequiredException", "ForbiddenException", "TenantDisabledException", "TenantSuspendedException", "MaintenanceException", "RiskOverrideRequiredException", "NotFoundException", "ConflictException", "StateException", "PlacementException", "UnsupportedBrokerException", "TermsNotAcceptedException", "ServiceAgreementNotAcceptedException", "RateLimitException", "InternalException", "UpstreamException", "DependencyUnavailableException", "EdgeException", "MfxTransportException", "MfxTimeoutException", "StreamClosedException", "WebhookSignatureException"]
+    }
+  ]
+}

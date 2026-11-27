@@ -1,0 +1,10 @@
+{
+  "about": "The event type each public type reads when it has no KIND of its own: its client names the type in a constant instead (MarketData.BOOK, ExpertAdvisors.TELEMETRY). The SDK reference's schema key for it is the contract's x-event-payloads entry for that event type, never written here. SdkRefTest checks each event type is the value of a public constant of the SDK, and that each of the type's components, but the stream's channel and seq, is a property of that payload. Every other type's schema is derived (SdkRefSchemas): a KIND or KINDS, or an exact match with one generated model.",
+  "events": {
+    "Book": "md.book",
+    "SubscriptionDegraded": "md.subscription_degraded",
+    "SubscriptionRecovered": "md.subscription_recovered",
+    "EaTelemetry": "expert_advisor.telemetry",
+    "EaTelemetryLost": "expert_advisor.telemetry_lost"
+  }
+}

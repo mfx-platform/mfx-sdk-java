@@ -1,0 +1,480 @@
+{
+  "about": "The Java idiom map for the surface check: how each entry of Python's surface.json (spec/surface.json) is found in this SDK's public API. A name not listed here follows the rule: snake_case becomes camelCase, a property is a no-argument accessor of that name, and an async method returns a CompletableFuture. An argument mapped to Class#method is a builder setting, found on the builder a candidate takes, returns, or whose enclosing type it takes. Keep it to the exceptions.",
+  "resources": {
+    "accounts": "com.mfxhub.sdk.Accounts",
+    "billing": "com.mfxhub.sdk.Billing",
+    "catalog": "com.mfxhub.sdk.Catalog",
+    "client": "com.mfxhub.sdk.MfxClient",
+    "copy": "com.mfxhub.sdk.Copy",
+    "execution": "com.mfxhub.sdk.Execution",
+    "expert_advisors": "com.mfxhub.sdk.ExpertAdvisors",
+    "farms": "com.mfxhub.sdk.Farms",
+    "maintenance": "com.mfxhub.sdk.Maintenance",
+    "md": "com.mfxhub.sdk.MarketData",
+    "risk": "com.mfxhub.sdk.Risk",
+    "stream": "com.mfxhub.sdk.MfxStream",
+    "tenant": "com.mfxhub.sdk.Tenant",
+    "terminals": "com.mfxhub.sdk.Terminals",
+    "trading_accounts": "com.mfxhub.sdk.TradingAccounts",
+    "usage": "com.mfxhub.sdk.UsageReader",
+    "webhooks": "com.mfxhub.sdk.Webhooks"
+  },
+  "protocols": {
+    "client.__aenter__": "java.lang.AutoCloseable",
+    "client.__aexit__": "java.lang.AutoCloseable",
+    "stream.__aenter__": "java.lang.AutoCloseable",
+    "stream.__aexit__": "java.lang.AutoCloseable",
+    "stream.__aiter__": "java.lang.Iterable"
+  },
+  "methods": {
+    "client.__init__": "builder",
+    "client.aclose": "close",
+    "stream.aclose": "close"
+  },
+  "blocking": {
+    "billing.invoices": "an Iterable that follows the cursor, blocking on each page",
+    "catalog.all_brokers": "an Iterable that follows the cursor, blocking on each page",
+    "client.aclose": "AutoCloseable.close, for try-with-resources; it waits for nothing on the network",
+    "copy.all_closes": "an Iterable that follows the cursor, blocking on each page",
+    "copy.all_followers": "an Iterable that follows the cursor, blocking on each page",
+    "copy.all_groups": "an Iterable that follows the cursor, blocking on each page",
+    "copy.all_leaders": "an Iterable that follows the cursor, blocking on each page",
+    "copy.all_log": "an Iterable that follows the cursor, blocking on each page",
+    "copy.all_signals": "an Iterable that follows the cursor, blocking on each page",
+    "copy.all_stopouts": "an Iterable that follows the cursor, blocking on each page",
+    "copy.all_tenant_stopouts": "an Iterable that follows the cursor, blocking on each page",
+    "expert_advisors.list": "an Iterable that follows the cursor, blocking on each page",
+    "farms.list": "an Iterable that follows the cursor, blocking on each page",
+    "maintenance.list": "an Iterable that follows the cursor, blocking on each page",
+    "maintenance.terminals": "an Iterable that follows the cursor, blocking on each page",
+    "md.all_account_subscriptions": "an Iterable that follows the cursor, blocking on each page",
+    "md.all_subscriptions": "an Iterable that follows the cursor, blocking on each page",
+    "md.all_ticks": "an Iterable that reads the window a call at a time, blocking on each call",
+    "risk.accounts": "an Iterable that follows the cursor, blocking on each page",
+    "risk.activity": "an Iterable that follows the cursor, blocking on each page",
+    "risk.challenge_accounts": "an Iterable that follows the cursor, blocking on each page",
+    "risk.challenges": "an Iterable that follows the cursor, blocking on each page; the reference's method is not async either",
+    "risk.plans": "an Iterable that follows the cursor, blocking on each page; the reference's method is not async either",
+    "risk.policies": "an Iterable that follows the cursor, blocking on each page; the reference's method is not async either",
+    "risk.policy_versions": "an Iterable that follows the cursor, blocking on each page; the reference's method is not async either",
+    "stream.aclose": "AutoCloseable.close, for try-with-resources; it ends a waiting read at once",
+    "terminals.list": "an Iterable that follows the cursor, blocking on each page",
+    "trading_accounts.list": "an Iterable that follows the cursor, blocking on each page",
+    "webhooks.failures": "an Iterable that follows the cursor, blocking on each page"
+  },
+  "arguments": {
+    "billing.invoices": {
+      "billing_profile_id": "com.mfxhub.sdk.ListInvoices$Builder#billingProfileId",
+      "state": "com.mfxhub.sdk.ListInvoices$Builder#state",
+      "limit": "com.mfxhub.sdk.ListInvoices$Builder#limit"
+    },
+    "billing.invoices_page": {
+      "billing_profile_id": "com.mfxhub.sdk.ListInvoices$Builder#billingProfileId",
+      "state": "com.mfxhub.sdk.ListInvoices$Builder#state",
+      "limit": "com.mfxhub.sdk.ListInvoices$Builder#limit"
+    },
+    "catalog.quote": {
+      "server_id": "com.mfxhub.sdk.WhichServer$Builder#serverId",
+      "account_type": "com.mfxhub.sdk.WhichServer$Builder#accountType"
+    },
+    "catalog.symbol": {
+      "server_id": "com.mfxhub.sdk.WhichServer$Builder#serverId",
+      "account_type": "com.mfxhub.sdk.WhichServer$Builder#accountType"
+    },
+    "catalog.symbols": {
+      "server_id": "com.mfxhub.sdk.WhichServer$Builder#serverId",
+      "account_type": "com.mfxhub.sdk.WhichServer$Builder#accountType"
+    },
+    "client.__init__": {
+      "base_url": "baseUrl",
+      "key_id": "keyId",
+      "private_key": "key",
+      "timeout_s": "com.mfxhub.sdk.MfxClient$Builder#timeout",
+      "read_retries": "com.mfxhub.sdk.MfxClient$Builder#readRetries",
+      "transport": "com.mfxhub.sdk.MfxClient$Builder#transport",
+      "sleep": "com.mfxhub.sdk.MfxClient$Builder#pause",
+      "jitter": "com.mfxhub.sdk.MfxClient$Builder#random",
+      "wall": "com.mfxhub.sdk.MfxClient$Builder#clock",
+      "on_call": "com.mfxhub.sdk.MfxClient$Builder#onCall"
+    },
+    "client.stream": {
+      "connect": "com.mfxhub.sdk.StreamOptions$Builder#connect",
+      "url": "com.mfxhub.sdk.StreamOptions$Builder#url",
+      "max_reconnects": "com.mfxhub.sdk.StreamOptions$Builder#maxReconnects"
+    },
+    "copy.all_closes": {
+      "limit": "com.mfxhub.sdk.ListCopyCloses$Builder#limit",
+      "follower_id": "com.mfxhub.sdk.ListCopyCloses$Builder#followerId",
+      "leader_id": "com.mfxhub.sdk.ListCopyCloses$Builder#leaderId",
+      "group_id": "com.mfxhub.sdk.ListCopyCloses$Builder#groupId",
+      "batch_id": "com.mfxhub.sdk.ListCopyCloses$Builder#batchId",
+      "state": "com.mfxhub.sdk.ListCopyCloses$Builder#state",
+      "from_": "com.mfxhub.sdk.ListCopyCloses$Builder#from",
+      "to": "com.mfxhub.sdk.ListCopyCloses$Builder#to"
+    },
+    "copy.all_followers": {
+      "limit": "com.mfxhub.sdk.ListCopyFollowers$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyFollowers$Builder#state",
+      "leader_id": "com.mfxhub.sdk.ListCopyFollowers$Builder#leaderId",
+      "account_id": "com.mfxhub.sdk.ListCopyFollowers$Builder#accountId",
+      "group_id": "com.mfxhub.sdk.ListCopyFollowers$Builder#groupId",
+      "out_of_step": "com.mfxhub.sdk.ListCopyFollowers$Builder#outOfStep",
+      "sort": "com.mfxhub.sdk.ListCopyFollowers$Builder#sort"
+    },
+    "copy.all_groups": {
+      "limit": "com.mfxhub.sdk.ListCopyGroups$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyGroups$Builder#state"
+    },
+    "copy.all_leaders": {
+      "limit": "com.mfxhub.sdk.ListCopyLeaders$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyLeaders$Builder#state",
+      "source": "com.mfxhub.sdk.ListCopyLeaders$Builder#source",
+      "account_id": "com.mfxhub.sdk.ListCopyLeaders$Builder#accountId"
+    },
+    "copy.all_log": {
+      "limit": "com.mfxhub.sdk.ListCopyLog$Builder#limit",
+      "leader_id": "com.mfxhub.sdk.ListCopyLog$Builder#leaderId",
+      "follower_id": "com.mfxhub.sdk.ListCopyLog$Builder#followerId",
+      "account_id": "com.mfxhub.sdk.ListCopyLog$Builder#accountId",
+      "group_id": "com.mfxhub.sdk.ListCopyLog$Builder#groupId",
+      "signal_id": "com.mfxhub.sdk.ListCopyLog$Builder#signalId",
+      "outcome": "com.mfxhub.sdk.ListCopyLog$Builder#outcome",
+      "reason": "com.mfxhub.sdk.ListCopyLog$Builder#reason",
+      "venue": "com.mfxhub.sdk.ListCopyLog$Builder#venue",
+      "from_": "com.mfxhub.sdk.ListCopyLog$Builder#from",
+      "to": "com.mfxhub.sdk.ListCopyLog$Builder#to",
+      "sort": "com.mfxhub.sdk.ListCopyLog$Builder#sort"
+    },
+    "copy.all_signals": {
+      "limit": "com.mfxhub.sdk.ListCopySignals$Builder#limit",
+      "leader_id": "com.mfxhub.sdk.ListCopySignals$Builder#leaderId",
+      "kind": "com.mfxhub.sdk.ListCopySignals$Builder#kind",
+      "action": "com.mfxhub.sdk.ListCopySignals$Builder#action",
+      "from_": "com.mfxhub.sdk.ListCopySignals$Builder#from",
+      "to": "com.mfxhub.sdk.ListCopySignals$Builder#to"
+    },
+    "copy.all_stopouts": {
+      "limit": "com.mfxhub.sdk.ListCopyStopouts$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyStopouts$Builder#state"
+    },
+    "copy.all_tenant_stopouts": {
+      "limit": "com.mfxhub.sdk.ListTenantStopouts$Builder#limit",
+      "state": "com.mfxhub.sdk.ListTenantStopouts$Builder#state",
+      "follower_id": "com.mfxhub.sdk.ListTenantStopouts$Builder#followerId",
+      "group_id": "com.mfxhub.sdk.ListTenantStopouts$Builder#groupId",
+      "from_": "com.mfxhub.sdk.ListTenantStopouts$Builder#from",
+      "to": "com.mfxhub.sdk.ListTenantStopouts$Builder#to"
+    },
+    "copy.closes": {
+      "limit": "com.mfxhub.sdk.ListCopyCloses$Builder#limit",
+      "follower_id": "com.mfxhub.sdk.ListCopyCloses$Builder#followerId",
+      "leader_id": "com.mfxhub.sdk.ListCopyCloses$Builder#leaderId",
+      "group_id": "com.mfxhub.sdk.ListCopyCloses$Builder#groupId",
+      "batch_id": "com.mfxhub.sdk.ListCopyCloses$Builder#batchId",
+      "state": "com.mfxhub.sdk.ListCopyCloses$Builder#state",
+      "from_": "com.mfxhub.sdk.ListCopyCloses$Builder#from",
+      "to": "com.mfxhub.sdk.ListCopyCloses$Builder#to"
+    },
+    "copy.create_follower": {
+      "scaling": "com.mfxhub.sdk.FollowerMandate$Builder#scaling",
+      "bounds": "com.mfxhub.sdk.FollowerMandate$Builder#bounds",
+      "symbol_map": "com.mfxhub.sdk.FollowerMandate$Builder#symbolMap",
+      "options": "com.mfxhub.sdk.FollowerMandate$Builder#options",
+      "risk_limits": "com.mfxhub.sdk.FollowerMandate$Builder#riskLimits",
+      "close_on_stopout": "com.mfxhub.sdk.FollowerMandate$Builder#closeOnStopout",
+      "group_id": "com.mfxhub.sdk.FollowerMandate$Builder#groupId"
+    },
+    "copy.create_group": {
+      "template": "com.mfxhub.sdk.CreateGroup$Builder#template",
+      "gross_exposure_cap": "com.mfxhub.sdk.CreateGroup$Builder#grossExposureCap",
+      "placement_policy": "com.mfxhub.sdk.CreateGroup$Builder#placementPolicy"
+    },
+    "copy.create_leader": {
+      "account_id": "com.mfxhub.sdk.CreateLeader$Builder#accountId",
+      "filters": "com.mfxhub.sdk.CreateLeader$Builder#filters",
+      "copies": "com.mfxhub.sdk.CreateLeader$Builder#copies",
+      "limits": "com.mfxhub.sdk.CreateLeader$Builder#limits",
+      "who_may_join": "com.mfxhub.sdk.CreateLeader$Builder#whoMayJoin"
+    },
+    "copy.followers": {
+      "limit": "com.mfxhub.sdk.ListCopyFollowers$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyFollowers$Builder#state",
+      "leader_id": "com.mfxhub.sdk.ListCopyFollowers$Builder#leaderId",
+      "account_id": "com.mfxhub.sdk.ListCopyFollowers$Builder#accountId",
+      "group_id": "com.mfxhub.sdk.ListCopyFollowers$Builder#groupId",
+      "out_of_step": "com.mfxhub.sdk.ListCopyFollowers$Builder#outOfStep",
+      "sort": "com.mfxhub.sdk.ListCopyFollowers$Builder#sort"
+    },
+    "copy.groups": {
+      "limit": "com.mfxhub.sdk.ListCopyGroups$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyGroups$Builder#state"
+    },
+    "copy.leaders": {
+      "limit": "com.mfxhub.sdk.ListCopyLeaders$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyLeaders$Builder#state",
+      "source": "com.mfxhub.sdk.ListCopyLeaders$Builder#source",
+      "account_id": "com.mfxhub.sdk.ListCopyLeaders$Builder#accountId"
+    },
+    "copy.log": {
+      "limit": "com.mfxhub.sdk.ListCopyLog$Builder#limit",
+      "leader_id": "com.mfxhub.sdk.ListCopyLog$Builder#leaderId",
+      "follower_id": "com.mfxhub.sdk.ListCopyLog$Builder#followerId",
+      "account_id": "com.mfxhub.sdk.ListCopyLog$Builder#accountId",
+      "group_id": "com.mfxhub.sdk.ListCopyLog$Builder#groupId",
+      "signal_id": "com.mfxhub.sdk.ListCopyLog$Builder#signalId",
+      "outcome": "com.mfxhub.sdk.ListCopyLog$Builder#outcome",
+      "reason": "com.mfxhub.sdk.ListCopyLog$Builder#reason",
+      "venue": "com.mfxhub.sdk.ListCopyLog$Builder#venue",
+      "from_": "com.mfxhub.sdk.ListCopyLog$Builder#from",
+      "to": "com.mfxhub.sdk.ListCopyLog$Builder#to",
+      "sort": "com.mfxhub.sdk.ListCopyLog$Builder#sort"
+    },
+    "copy.preview_follower": {
+      "bounds": "com.mfxhub.sdk.PreviewFollower$Builder#bounds",
+      "symbol_map": "com.mfxhub.sdk.PreviewFollower$Builder#symbolMap",
+      "options": "com.mfxhub.sdk.PreviewFollower$Builder#options"
+    },
+    "copy.rollover_group": {
+      "fields": "com.mfxhub.sdk.RolloverGroup$Builder#fields",
+      "after": "com.mfxhub.sdk.RolloverGroup$Builder#after",
+      "limit": "com.mfxhub.sdk.RolloverGroup$Builder#limit"
+    },
+    "copy.send_open_signal": {
+      "volume": "com.mfxhub.sdk.OpenSignal#volume",
+      "units": "com.mfxhub.sdk.OpenSignal#units",
+      "instrument_key": "com.mfxhub.sdk.OpenSignal$Builder#instrumentKey",
+      "sl": "com.mfxhub.sdk.OpenSignal$Builder#sl",
+      "tp": "com.mfxhub.sdk.OpenSignal$Builder#tp",
+      "time": "com.mfxhub.sdk.OpenSignal$Builder#time",
+      "account": "com.mfxhub.sdk.OpenSignal$Builder#account"
+    },
+    "copy.signals": {
+      "limit": "com.mfxhub.sdk.ListCopySignals$Builder#limit",
+      "leader_id": "com.mfxhub.sdk.ListCopySignals$Builder#leaderId",
+      "kind": "com.mfxhub.sdk.ListCopySignals$Builder#kind",
+      "action": "com.mfxhub.sdk.ListCopySignals$Builder#action",
+      "from_": "com.mfxhub.sdk.ListCopySignals$Builder#from",
+      "to": "com.mfxhub.sdk.ListCopySignals$Builder#to"
+    },
+    "copy.stopouts": {
+      "limit": "com.mfxhub.sdk.ListCopyStopouts$Builder#limit",
+      "state": "com.mfxhub.sdk.ListCopyStopouts$Builder#state"
+    },
+    "copy.tenant_stopouts": {
+      "limit": "com.mfxhub.sdk.ListTenantStopouts$Builder#limit",
+      "state": "com.mfxhub.sdk.ListTenantStopouts$Builder#state",
+      "follower_id": "com.mfxhub.sdk.ListTenantStopouts$Builder#followerId",
+      "group_id": "com.mfxhub.sdk.ListTenantStopouts$Builder#groupId",
+      "from_": "com.mfxhub.sdk.ListTenantStopouts$Builder#from",
+      "to": "com.mfxhub.sdk.ListTenantStopouts$Builder#to"
+    },
+    "copy.update_follower": {
+      "scaling": "com.mfxhub.sdk.FollowerMandate$Builder#scaling",
+      "bounds": "com.mfxhub.sdk.FollowerMandate$Builder#bounds",
+      "symbol_map": "com.mfxhub.sdk.FollowerMandate$Builder#symbolMap",
+      "options": "com.mfxhub.sdk.FollowerMandate$Builder#options",
+      "risk_limits": "com.mfxhub.sdk.FollowerMandate$Builder#riskLimits",
+      "close_on_stopout": "com.mfxhub.sdk.FollowerMandate$Builder#closeOnStopout"
+    },
+    "copy.update_group": {
+      "name": "com.mfxhub.sdk.UpdateGroup$Builder#name",
+      "template": "com.mfxhub.sdk.UpdateGroup$Builder#template",
+      "gross_exposure_cap": "com.mfxhub.sdk.UpdateGroup$Builder#grossExposureCap",
+      "placement_policy": "com.mfxhub.sdk.UpdateGroup$Builder#placementPolicy"
+    },
+    "copy.update_leader": {
+      "filters": "com.mfxhub.sdk.UpdateLeader$Builder#filters",
+      "copies": "com.mfxhub.sdk.UpdateLeader$Builder#copies",
+      "signal_lifetime_s": "com.mfxhub.sdk.UpdateLeader$Builder#signalLifetimeS",
+      "limits": "com.mfxhub.sdk.UpdateLeader$Builder#limits",
+      "who_may_join": "com.mfxhub.sdk.UpdateLeader$Builder#whoMayJoin"
+    },
+    "execution.modify_order": {
+      "price": "com.mfxhub.sdk.ModifyOrder$Builder#price",
+      "stop_limit_price": "com.mfxhub.sdk.ModifyOrder$Builder#stopLimitPrice",
+      "sl": "com.mfxhub.sdk.ModifyOrder$Builder#sl",
+      "tp": "com.mfxhub.sdk.ModifyOrder$Builder#tp",
+      "expires_at": "com.mfxhub.sdk.ModifyOrder$Builder#expiresAt"
+    },
+    "execution.modify_position": {
+      "sl": "com.mfxhub.sdk.ModifyPosition$Builder#sl",
+      "tp": "com.mfxhub.sdk.ModifyPosition$Builder#tp"
+    },
+    "execution.place_order": {
+      "order_type": "com.mfxhub.sdk.PlaceOrder$Builder#orderType",
+      "price": "com.mfxhub.sdk.PlaceOrder$Builder#price",
+      "stop_limit_price": "com.mfxhub.sdk.PlaceOrder$Builder#stopLimitPrice",
+      "sl": "com.mfxhub.sdk.PlaceOrder$Builder#sl",
+      "tp": "com.mfxhub.sdk.PlaceOrder$Builder#tp",
+      "deviation_points": "com.mfxhub.sdk.PlaceOrder$Builder#deviationPoints",
+      "expires_at": "com.mfxhub.sdk.PlaceOrder$Builder#expiresAt",
+      "magic": "com.mfxhub.sdk.PlaceOrder$Builder#magic",
+      "comment": "com.mfxhub.sdk.PlaceOrder$Builder#comment"
+    },
+    "execution.wait_for": {
+      "timeout_s": "timeout"
+    },
+    "expert_advisors.wait_for_verdict": {
+      "timeout_s": "timeout"
+    },
+    "maintenance.list": {
+      "state": "com.mfxhub.sdk.ListMaintenance$Builder#state",
+      "limit": "com.mfxhub.sdk.ListMaintenance$Builder#limit"
+    },
+    "maintenance.page": {
+      "state": "com.mfxhub.sdk.ListMaintenance$Builder#state",
+      "limit": "com.mfxhub.sdk.ListMaintenance$Builder#limit"
+    },
+    "md.all_ticks": {
+      "page_size": "pageSize"
+    },
+    "risk.accounts": {
+      "coverage": "com.mfxhub.sdk.ListRiskAccounts$Builder#coverage",
+      "restriction": "com.mfxhub.sdk.ListRiskAccounts$Builder#restriction",
+      "sort": "com.mfxhub.sdk.ListRiskAccounts$Builder#sort"
+    },
+    "risk.accounts_page": {
+      "coverage": "com.mfxhub.sdk.ListRiskAccounts$Builder#coverage",
+      "restriction": "com.mfxhub.sdk.ListRiskAccounts$Builder#restriction",
+      "sort": "com.mfxhub.sdk.ListRiskAccounts$Builder#sort",
+      "limit": "com.mfxhub.sdk.ListRiskAccounts$Builder#limit"
+    },
+    "risk.activity": {
+      "account_id": "com.mfxhub.sdk.ListRiskActivity$Builder#accountId",
+      "kind": "com.mfxhub.sdk.ListRiskActivity$Builder#kind",
+      "outcome": "com.mfxhub.sdk.ListRiskActivity$Builder#outcome",
+      "start": "com.mfxhub.sdk.ListRiskActivity$Builder#start",
+      "end": "com.mfxhub.sdk.ListRiskActivity$Builder#end",
+      "sort": "com.mfxhub.sdk.ListRiskActivity$Builder#sort"
+    },
+    "risk.activity_page": {
+      "account_id": "com.mfxhub.sdk.ListRiskActivity$Builder#accountId",
+      "kind": "com.mfxhub.sdk.ListRiskActivity$Builder#kind",
+      "outcome": "com.mfxhub.sdk.ListRiskActivity$Builder#outcome",
+      "start": "com.mfxhub.sdk.ListRiskActivity$Builder#start",
+      "end": "com.mfxhub.sdk.ListRiskActivity$Builder#end",
+      "sort": "com.mfxhub.sdk.ListRiskActivity$Builder#sort",
+      "limit": "com.mfxhub.sdk.ListRiskActivity$Builder#limit"
+    },
+    "risk.challenge_accounts": {
+      "below_min_days": "com.mfxhub.sdk.ListChallengeAccounts$Builder#belowMinDays",
+      "state": "com.mfxhub.sdk.ListChallengeAccounts$Builder#state",
+      "rule": "com.mfxhub.sdk.ListChallengeAccounts$Builder#rule",
+      "sort": "com.mfxhub.sdk.ListChallengeAccounts$Builder#sort"
+    },
+    "risk.challenge_accounts_page": {
+      "below_min_days": "com.mfxhub.sdk.ListChallengeAccounts$Builder#belowMinDays",
+      "state": "com.mfxhub.sdk.ListChallengeAccounts$Builder#state",
+      "rule": "com.mfxhub.sdk.ListChallengeAccounts$Builder#rule",
+      "sort": "com.mfxhub.sdk.ListChallengeAccounts$Builder#sort",
+      "limit": "com.mfxhub.sdk.ListChallengeAccounts$Builder#limit"
+    },
+    "risk.plans": {
+      "account_id": "com.mfxhub.sdk.ListRiskPlans$Builder#accountId",
+      "state": "com.mfxhub.sdk.ListRiskPlans$Builder#state",
+      "sort": "com.mfxhub.sdk.ListRiskPlans$Builder#sort"
+    },
+    "risk.plans_page": {
+      "account_id": "com.mfxhub.sdk.ListRiskPlans$Builder#accountId",
+      "state": "com.mfxhub.sdk.ListRiskPlans$Builder#state",
+      "sort": "com.mfxhub.sdk.ListRiskPlans$Builder#sort",
+      "limit": "com.mfxhub.sdk.ListRiskPlans$Builder#limit"
+    },
+    "risk.policies": {
+      "state": "com.mfxhub.sdk.ListRiskPolicies$Builder#state",
+      "sort": "com.mfxhub.sdk.ListRiskPolicies$Builder#sort",
+      "limit": "com.mfxhub.sdk.ListRiskPolicies$Builder#limit"
+    },
+    "terminals.attach_expert_advisor": {
+      "confirm_open_positions": "com.mfxhub.sdk.Relaunch$Builder#confirmOpenPositions",
+      "queue": "com.mfxhub.sdk.Relaunch$Builder#queue"
+    },
+    "terminals.bulk_restart": {
+      "farm_id": "com.mfxhub.sdk.BulkRestart$Builder#farmId",
+      "broker_id": "com.mfxhub.sdk.BulkRestart$Builder#brokerId",
+      "terminal_ids": "com.mfxhub.sdk.BulkRestart$Builder#terminalIds",
+      "confirm_open_positions": "com.mfxhub.sdk.BulkRestart$Builder#confirmOpenPositions"
+    },
+    "terminals.create": {
+      "farm_id": "com.mfxhub.sdk.CreateTerminal$Builder#farmId",
+      "streaming": "com.mfxhub.sdk.CreateTerminal$Builder#streaming",
+      "execution": "com.mfxhub.sdk.CreateTerminal$Builder#execution",
+      "instruments": "com.mfxhub.sdk.CreateTerminal$Builder#instruments",
+      "labels": "com.mfxhub.sdk.CreateTerminal$Builder#labels",
+      "redundancy": "com.mfxhub.sdk.CreateTerminal$Builder#redundancy"
+    },
+    "terminals.detach_expert_advisor": {
+      "confirm_open_positions": "com.mfxhub.sdk.Relaunch$Builder#confirmOpenPositions",
+      "queue": "com.mfxhub.sdk.Relaunch$Builder#queue"
+    },
+    "terminals.drain": {
+      "reason": "com.mfxhub.sdk.DrainTerminal$Builder#reason",
+      "confirm_open_positions": "com.mfxhub.sdk.DrainTerminal$Builder#confirmOpenPositions"
+    },
+    "terminals.list": {
+      "limit": "com.mfxhub.sdk.ListTerminals$Builder#limit",
+      "label": "com.mfxhub.sdk.ListTerminals$Builder#label",
+      "state": "com.mfxhub.sdk.ListTerminals$Builder#state"
+    },
+    "terminals.page": {
+      "limit": "com.mfxhub.sdk.ListTerminals$Builder#limit",
+      "label": "com.mfxhub.sdk.ListTerminals$Builder#label",
+      "state": "com.mfxhub.sdk.ListTerminals$Builder#state"
+    },
+    "terminals.restart": {
+      "confirm_open_positions": "com.mfxhub.sdk.Relaunch$Builder#confirmOpenPositions",
+      "queue": "com.mfxhub.sdk.Relaunch$Builder#queue"
+    },
+    "terminals.wait_for_operation": {
+      "timeout_s": "timeout"
+    },
+    "terminals.wait_until_active": {
+      "timeout_s": "timeout"
+    },
+    "trading_accounts.list": {
+      "limit": "com.mfxhub.sdk.ListTradingAccounts$Builder#limit",
+      "venue": "com.mfxhub.sdk.ListTradingAccounts$Builder#venue",
+      "environment": "com.mfxhub.sdk.ListTradingAccounts$Builder#environment",
+      "state": "com.mfxhub.sdk.ListTradingAccounts$Builder#state"
+    },
+    "trading_accounts.modify_order": {
+      "price": "com.mfxhub.sdk.ModifyOrder$Builder#price",
+      "stop_limit_price": "com.mfxhub.sdk.ModifyOrder$Builder#stopLimitPrice",
+      "sl": "com.mfxhub.sdk.ModifyOrder$Builder#sl",
+      "tp": "com.mfxhub.sdk.ModifyOrder$Builder#tp",
+      "expires_at": "com.mfxhub.sdk.ModifyOrder$Builder#expiresAt"
+    },
+    "trading_accounts.modify_position": {
+      "sl": "com.mfxhub.sdk.ModifyPosition$Builder#sl",
+      "tp": "com.mfxhub.sdk.ModifyPosition$Builder#tp"
+    },
+    "trading_accounts.page": {
+      "limit": "com.mfxhub.sdk.ListTradingAccounts$Builder#limit",
+      "venue": "com.mfxhub.sdk.ListTradingAccounts$Builder#venue",
+      "environment": "com.mfxhub.sdk.ListTradingAccounts$Builder#environment",
+      "state": "com.mfxhub.sdk.ListTradingAccounts$Builder#state"
+    },
+    "trading_accounts.place_order": {
+      "order_type": "com.mfxhub.sdk.PlaceOrder$Builder#orderType",
+      "price": "com.mfxhub.sdk.PlaceOrder$Builder#price",
+      "stop_limit_price": "com.mfxhub.sdk.PlaceOrder$Builder#stopLimitPrice",
+      "sl": "com.mfxhub.sdk.PlaceOrder$Builder#sl",
+      "tp": "com.mfxhub.sdk.PlaceOrder$Builder#tp",
+      "deviation_points": "com.mfxhub.sdk.PlaceOrder$Builder#deviationPoints",
+      "expires_at": "com.mfxhub.sdk.PlaceOrder$Builder#expiresAt",
+      "magic": "com.mfxhub.sdk.PlaceOrder$Builder#magic",
+      "comment": "com.mfxhub.sdk.PlaceOrder$Builder#comment"
+    },
+    "webhooks.replay": {
+      "after": "com.mfxhub.sdk.ReplayWebhook#after",
+      "failure_id": "com.mfxhub.sdk.ReplayWebhook#failureId"
+    },
+    "webhooks.update": {
+      "url": "com.mfxhub.sdk.UpdateWebhook$Builder#url",
+      "event_types": "com.mfxhub.sdk.UpdateWebhook$Builder#eventTypes",
+      "description": "com.mfxhub.sdk.UpdateWebhook$Builder#description",
+      "paused": "com.mfxhub.sdk.UpdateWebhook$Builder#paused"
+    }
+  },
+  "pending": {}
+}
